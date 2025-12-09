@@ -168,6 +168,72 @@
             align-items: center;
         }
 
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 340px;
+            height: 340px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            margin: 0 auto;
+            box-shadow: 0 0 60px rgba(102, 126, 234, 0.6), 0 20px 45px rgba(102, 126, 234, 0.25), inset 0 0 30px rgba(255, 255, 255, 0.13);
+            transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
+            filter: brightness(1.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.08) translateY(-14px) rotate(-2deg);
+            box-shadow: 0 0 90px rgba(102, 126, 234, 0.9), 0 30px 70px rgba(102, 126, 234, 0.35), inset 0 0 40px rgba(255, 255, 255, 0.25);
+            filter: brightness(1.18);
+            border-color: #764ba2;
+        }
+
+        /* Floating badge for profile photo */
+        .profile-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.25);
+            letter-spacing: 1px;
+            z-index: 3;
+            animation: floatBadge 2.5s infinite ease-in-out alternate;
+        }
+
+        @keyframes floatBadge {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Hero section background effect */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 600px;
+            background: radial-gradient(circle at 60% 40%, #764ba2 0%, #667eea 60%, transparent 100%);
+            opacity: 0.18;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .about-text h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -194,6 +260,42 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+        }
+
+        .services-list {
+            margin-top: 1.5rem;
+        }
+
+        .service-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item h4 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .service-item ul {
+            list-style: none;
+            padding-left: 0;
+            color: #555;
+        }
+
+        .service-item li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .service-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
         }
 
         /* Projects Section */
@@ -264,21 +366,7 @@
             font-size: 0.8rem;
         }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
 
-        .project-links a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-links a:hover {
-            color: #764ba2;
-        }
 
         /* Experience Section */
         .experience {
@@ -417,6 +505,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .profile-photo {
+                width: 240px;
+                height: 240px;
+            }
+
             .section-title {
                 font-size: 2rem;
             }
@@ -465,6 +558,12 @@
         <section class="about" id="about">
             <div class="section-title">About Me</div>
             <div class="about-content">
+                <div class="about-image">
+                    <div style="position:relative; display:inline-block;">
+                        <span class="profile-badge">GenAI Expert</span>
+                        <img src="profile-photo.jpg" alt="Surya Prakash" class="profile-photo">
+                    </div>
+                </div>
                 <div class="about-text">
                     <h3>GenAI & Data Science Specialist</h3>
                     <p>I'm a passionate GenAI developer with expertise in building intelligent applications, machine learning models, and data-driven solutions. I specialize in cutting-edge AI projects that solve real-world problems with a focus on generative AI, NLP, and advanced analytics.</p>
@@ -498,10 +597,35 @@
                 </div>
                 <div class="about-text">
                     <h3>What I Do</h3>
-                    <p><strong>Generative AI:</strong> Building applications powered by large language models, prompt engineering, and AI chatbots.</p>
-                    <p><strong>Data Science:</strong> Creating predictive models, analyzing complex datasets, and deriving actionable insights.</p>
-                    <p><strong>Machine Learning:</strong> Developing end-to-end ML pipelines, feature engineering, and model optimization.</p>
-                    <p><strong>Problem Solving:</strong> Transforming business challenges into data-driven solutions using cutting-edge technology.</p>
+                    <div class="services-list">
+                        <div class="service-item">
+                            <h4>🤖 Generative AI</h4>
+                            <ul>
+                                <li>Design and develop applications powered by large language models (LLMs)</li>
+                                <li>Expertise in prompt engineering and building intelligent AI chatbots</li>
+                            </ul>
+                        </div>
+                        <div class="service-item">
+                            <h4>📊 Data Science</h4>
+                            <ul>
+                                <li>Analyze complex datasets to uncover patterns and insights</li>
+                                <li>Build predictive models that drive data-driven decision-making</li>
+                            </ul>
+                        </div>
+                        <div class="service-item">
+                            <h4>⚙️ Machine Learning</h4>
+                            <ul>
+                                <li>Develop end-to-end ML pipelines, including feature engineering and model optimization</li>
+                                <li>Implement scalable solutions for real-world business challenges</li>
+                            </ul>
+                        </div>
+                        <div class="service-item">
+                            <h4>💡 Problem Solving</h4>
+                            <ul>
+                                <li>Transform business problems into innovative, data-driven solutions using cutting-edge technology</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -525,10 +649,6 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">API Development</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Live Demo</a>
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
-                        </div>
                     </div>
                 </div>
 
@@ -543,9 +663,6 @@
                             <span class="tech-tag">Streamlit</span>
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Code Execution</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -562,9 +679,6 @@
                             <span class="tech-tag">GenAI</span>
                             <span class="tech-tag">NLP</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
-                        </div>
                     </div>
                 </div>
 
@@ -579,9 +693,6 @@
                             <span class="tech-tag">TF-IDF</span>
                             <span class="tech-tag">Random Forest</span>
                             <span class="tech-tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -598,9 +709,6 @@
                             <span class="tech-tag">Time Series</span>
                             <span class="tech-tag">Python</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
-                        </div>
                     </div>
                 </div>
 
@@ -615,9 +723,6 @@
                             <span class="tech-tag">TF-IDF</span>
                             <span class="tech-tag">SMOTE</span>
                             <span class="tech-tag">Scikit-Learn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -703,10 +808,10 @@
             <h2>Let's Connect</h2>
             <p style="margin-bottom: 2rem; font-size: 1.1rem;">I'm always interested in hearing about new opportunities and projects.</p>
             <div class="contact-links">
-                <a href="https://github.com/surya120502" target="_blank">GitHub Profile</a>
-                <a href="https://github.com/surya120502/portfolio" target="_blank">Portfolio Repository</a>
-                <a href="mailto:surya.prakash@birlasoft.com">Email Me</a>
-                <a href="#" download>Resume (PDF)</a>
+                <a href="https://www.linkedin.com/in/surya-prakash-190193212/" target="_blank">LinkedIn</a>
+                <a href="mailto:suryasundar6964@gmail.com">Email Me</a>
+                <a href="tel:+919884912502">Call Me</a>
+                <a href="Surya Prakash Resume (1).pdf" download="Surya-Prakash-Resume.pdf">Download Resume</a>
             </div>
         </section>
     </div>
