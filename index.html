@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI & Data Science Portfolio | Surya Prakash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .hero-content .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 5rem 0;
+            margin: 3rem 0;
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: #764ba2;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: white;
+            padding: 5rem 0;
+            margin: 3rem 0;
+            border-radius: 10px;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            border-left: 3px solid #667eea;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .experience-item h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Surya Prakash</div>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Surya Prakash</h1>
+            <p class="subtitle">GenAI & Data Science Developer | Building intelligent solutions with AI, ML & Data Science</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <div class="container">
+        <section class="about" id="about">
+            <div class="section-title">About Me</div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>GenAI & Data Science Specialist</h3>
+                    <p>I'm a passionate GenAI developer with expertise in building intelligent applications, machine learning models, and data-driven solutions. I specialize in cutting-edge AI projects that solve real-world problems with a focus on generative AI, NLP, and advanced analytics.</p>
+                    <p>My focus areas include Large Language Models, generative AI applications, NLP, machine learning, data analysis, and cloud-based solutions. I'm committed to continuous learning and staying at the forefront of AI technology.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">GenAI</span>
+                        <span class="skill-tag">Data Science</span>
+                        <span class="skill-tag">RAG (Retrieval-Augmented Generation)</span>
+                        <span class="skill-tag">Azure OpenAI</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">NLP (TF-IDF, Tokenization)</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">Logistic Regression</span>
+                        <span class="skill-tag">SVM</span>
+                        <span class="skill-tag">Naive Bayes</span>
+                        <span class="skill-tag">SMOTE</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">API Development</span>
+                        <span class="skill-tag">Jupyter Notebook</span>
+                        <span class="skill-tag">PDF Extraction</span>
+                        <span class="skill-tag">Data Cleaning</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Vector Databases</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>What I Do</h3>
+                    <p><strong>Generative AI:</strong> Building applications powered by large language models, prompt engineering, and AI chatbots.</p>
+                    <p><strong>Data Science:</strong> Creating predictive models, analyzing complex datasets, and deriving actionable insights.</p>
+                    <p><strong>Machine Learning:</strong> Developing end-to-end ML pipelines, feature engineering, and model optimization.</p>
+                    <p><strong>Problem Solving:</strong> Transforming business challenges into data-driven solutions using cutting-edge technology.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="container">
+        <section class="projects" id="projects">
+            <div class="section-title">Featured Projects</div>
+            <div class="projects-grid">
+                <!-- Project 1 - Ask Jillian -->
+                <div class="project-card">
+                    <div class="project-image">💬</div>
+                    <div class="project-content">
+                        <h3>Ask Jillian — Conversational GenAI Chatbot</h3>
+                        <p>Designed and deployed an enterprise-grade chatbot enabling natural language queries with text, tables, and visualizations. Applied prompt engineering, integrated vector databases (RAG) for context-aware answers, optimized with caching, and built scalable APIs for seamless integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Azure OpenAI</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">API Development</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Code Generator -->
+                <div class="project-card">
+                    <div class="project-image">⚙️</div>
+                    <div class="project-content">
+                        <h3>Code Generator POC with Self-Healing</h3>
+                        <p>Created a Streamlit-based app integrated with Azure OpenAI to generate, extract, and auto-execute code from natural language prompts. Designed a self-healing mechanism that iteratively fixes errors and re-runs code.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Azure OpenAI</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Code Execution</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Resume Checker -->
+                <div class="project-card">
+                    <div class="project-image">📄</div>
+                    <div class="project-content">
+                        <h3>Resume Checker POC</h3>
+                        <p>Developed an AI-powered tool where users upload resumes; the system extracts key information and evaluates fit against job requirements, providing instant feedback to recruiters and candidates.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PDF Extraction</span>
+                            <span class="tech-tag">GenAI</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Part Classification -->
+                <div class="project-card">
+                    <div class="project-image">🏭</div>
+                    <div class="project-content">
+                        <h3>Martin Marietta - Part Classification</h3>
+                        <p>Built and productionized a machine learning model to classify parts from text descriptions, automating purchase order processing. Implemented text preprocessing (TF-IDF) and trained Random Forest Classifier for higher accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">TF-IDF</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Stock Price Forecasting -->
+                <div class="project-card">
+                    <div class="project-image">📈</div>
+                    <div class="project-content">
+                        <h3>Stock Price Forecasting</h3>
+                        <p>Implemented regression-based predictive models with Random Forest Regressor and hyperparameter tuning achieving best forecasting accuracy. Deployed during Kanini Software Solutions internship.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Time Series</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Spam Mail Detection -->
+                <div class="project-card">
+                    <div class="project-image">🚫</div>
+                    <div class="project-content">
+                        <h3>Spam Mail Detection System</h3>
+                        <p>Developed a classifier using Logistic Regression, TF-IDF, and SMOTE to handle class imbalance. Improves email security and inbox management for enterprise users.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Logistic Regression</span>
+                            <span class="tech-tag">TF-IDF</span>
+                            <span class="tech-tag">SMOTE</span>
+                            <span class="tech-tag">Scikit-Learn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/surya120502" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="container">
+        <section class="experience" id="experience">
+            <div class="section-title">Professional Experience</div>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Birlasoft Ltd.</h3>
+                    <div class="role">Data Science & GenAI Developer</div>
+                    <div class="date">Feb 2024 - Present</div>
+                    <p>Designing and deploying enterprise-grade GenAI chatbots (Ask Jillian) with RAG integration and vector databases for context-aware answers. Building machine learning models for production (Martin Marietta part classification). Developing AI-powered tools (Resume Checker POC, Code Generator POC with Azure OpenAI). Executing end-to-end data workflows and collaborating with cross-functional teams on emerging AI/ML tools.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Kanini Software Solutions</h3>
+                    <div class="role">Data Science Intern</div>
+                    <div class="date">Jun 2023 - Dec 2023</div>
+                    <p>Built end-to-end ML solutions covering data cleaning, feature engineering, and imputation. Designed No-Show Appointment Prediction system with Naive Bayes, SVM, Random Forest, and Logistic Regression. Implemented Stock Price Forecasting with Random Forest Regressor and hyperparameter tuning. Developed Spam Mail Detection classifier using Logistic Regression, TF-IDF, and SMOTE for class imbalance handling.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Academic & Self-Learning</h3>
+                    <div class="role">Student Researcher</div>
+                    <div class="date">Aug 2019 - Present</div>
+                    <p>BTech Information Technology from Sri Venkateswara College of Engineering (Aug 2019 - Jun 2023, CGPA: 8.2). Pursued multiple certifications in AI/ML from Google, Coursera, DeepLearning.AI, AWS, and Microsoft Azure. Developed various end-to-end projects in ML, NLP, data analysis, and GenAI applications.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Education Section -->
+    <div class="container">
+        <section class="experience" id="education">
+            <div class="section-title">Education</div>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Sri Venkateswara College of Engineering</h3>
+                    <div class="role">B.Tech - Information Technology</div>
+                    <div class="date">Aug 2019 - Jun 2023</div>
+                    <p><strong>CGPA: 8.2</strong> | Focus on Artificial Intelligence, Machine Learning, Data Science, and Software Development. Coursework includes: Advanced Data Structures, Algorithms, Database Management Systems, Web Development, Cloud Computing, and AI/ML specialization.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>RKM Matriculation Higher Secondary School</h3>
+                    <div class="role">Higher Secondary Education</div>
+                    <div class="date">Jun 2018 - May 2019</div>
+                    <p><strong>Percentage: 75%</strong></p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Certifications & Professional Development</h3>
+                    <div class="role">Continuous Learning</div>
+                    <div class="date">2022 - Present</div>
+                    <p><strong>Key Certifications:</strong></p>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: #555;">
+                        <li>Google AI Essentials — Coursera</li>
+                        <li>Prompt Engineering Basics for AI — Google AI</li>
+                        <li>Generative AI Fundamentals & How Large Language Models Work — Coursera</li>
+                        <li>Generative AI for Everyone — DeepLearning.AI</li>
+                        <li>Advanced Google Analytics — Google</li>
+                        <li>Foundations of Data: Data, Data Everywhere — Google</li>
+                        <li>Generative Pretrained Transformers (GPT) — University of Glasgow</li>
+                        <li>Introduction to Generative AI — Coursera</li>
+                        <li>Introduction to Machine Learning: The Art of Possible — AWS</li>
+                        <li>Introduction to Microsoft Azure Cloud Services — Microsoft</li>
+                        <li>Build a Netflix Clone Using AI — Cuvette</li>
+                        <li>Basic Proficiency in KNIME Analytics Platform</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container">
+        <section class="contact" id="contact">
+            <h2>Let's Connect</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">I'm always interested in hearing about new opportunities and projects.</p>
+            <div class="contact-links">
+                <a href="https://github.com/surya120502" target="_blank">GitHub Profile</a>
+                <a href="https://github.com/surya120502/portfolio" target="_blank">Portfolio Repository</a>
+                <a href="mailto:surya.prakash@birlasoft.com">Email Me</a>
+                <a href="#" download>Resume (PDF)</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Surya Prakash. All rights reserved. Built with HTML, CSS & ❤️</p>
+        </div>
+    </footer>
+</body>
+</html>
